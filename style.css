@@ -1,0 +1,129 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --bg-success: rgba(98, 238, 91, 1);
+    --bg-warning: rgba(244, 247, 23, 1);
+    --bg-error: rgba(255, 0, 41, 1);
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    display: flex;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+.container {
+    position: fixed;
+    right: 1rem;
+    top:100px;
+}
+.toast {
+    display: flex;
+    
+    max-width: 300px;
+    justify-content: space-between;
+    align-items: center;
+    
+    /* animation: animate 2s ease-in-out forwards; */
+    margin-bottom: 10px;
+}
+
+.toast.success {
+    background: var(--bg-success);
+    padding: 10px 1rem;
+    border-radius: 5px;
+    color: rgb(21, 3, 98);
+}
+
+.toast.error {
+    background: var(--bg-error);
+    padding: 10px 1rem;
+    border-radius: 5px;
+    color: rgb(21, 3, 98);
+}
+
+.toast.warning {
+    background: var(--bg-warning);
+    padding: 10px 1rem;
+    border-radius: 5px;
+    color: rgb(21, 3, 98);
+}
+
+.delete {
+    cursor: pointer;
+    position: relative;
+    padding: 7px 10px;
+    transition: color 0.4s ease;
+}
+
+.delete:hover {
+    background-color: rgba(0, 0,0, 0.3);
+    border-radius: 50%;
+    color: white;
+    
+}
+
+
+
+.body {
+    padding-right: 30px;
+}
+
+.header {
+    padding-bottom: 4px;
+}
+
+.btn {
+    padding: 10px 20px;
+    border: 0;
+    border-radius: 4px;
+    outline: none;
+    cursor: pointer;
+    margin: 10px
+}
+
+.btn-success {
+    background: var(--bg-success);
+    color:teal;
+    font-weight: bold;
+}
+
+
+.btn-warning {
+    background: var(--bg-warning);
+    color:teal;
+    font-weight: bold;
+}
+
+
+.btn-error {
+    background: var(--bg-error);
+    color:white;
+    font-weight: bold;
+}
+
+.btn:active {
+    transform: scale(0.95);
+}
+
+@keyframes animate {
+    0%{
+        transform: translateY(0px);
+        opacity: 0.3;
+    }
+    40%{
+        transform: translateY(-60px);
+        animation-delay: 2s;
+        opacity: 1;
+    }
+
+    100%{
+        /* opacity: 0; */
+        transform: translateY(-100px);
+    }
+}
