@@ -1,6 +1,6 @@
 
 let arrToast = [];
-
+let id = 1;
 const deleteBtn = document.querySelector(".delete");
 const success = document.querySelector(".btn-success");
 const warning = document.querySelector(".btn-warning");
@@ -13,7 +13,6 @@ let container = document.createElement('div');
 success.addEventListener("click", successToast);
 warning.addEventListener("click", warningToast);
 error.addEventListener("click", errorToast);
-deleteBtn.addEventListener("click", deleteToast);
 
 
 function successToast() {
@@ -28,9 +27,17 @@ function errorToast() {
     createToast('error', 'Lỗi', 'đăng nhập không thành công!', 3000);
 }
 
-function deleteToast(idx) {
-    arrToast[idx].remove();
+function deleteToast(id) {
+    arrToast = arrToast.filter((toast) => {
+        if(toast.id === id) {
+            toast.toast.remove();
+            return false;
+        }
+        return true;
+    });
+
 }
+
 
 
 function createToast(type, header, content, timelife) {
@@ -38,13 +45,17 @@ function createToast(type, header, content, timelife) {
     let toast = document.createElement("div");
     toast.classList.add("toast");
     toast.classList.add(type);
-    arrToast.push(toast);
+    id++;
+    arrToast.push({
+        id: id,
+        toast: toast
+    });
     toast.innerHTML = `
     <div class="body">
     <p class="header">${header}!</p>
     <p class="content">${content}</p>
     </div>
-    <div class="delete" onclick="deleteToast(${arrToast.length-1})">X</div>`;
+    <div class="delete" onclick="deleteToast(${arrToast[arrToast.length-1].id})">X</div>`;
     container.appendChild(toast);
     body.appendChild(container);
     setTimeout(() => {
